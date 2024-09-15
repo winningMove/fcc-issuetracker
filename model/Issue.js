@@ -18,9 +18,10 @@ module.exports = class Issue {
   }
 
   update(updates) {
+    console.log(updates);
     Object.keys(updates).forEach((k) => {
       if (Object.hasOwn(this, k)) {
-        this[k] = updates[k];
+        this[k] = k === "open" && updates[k] === "false" ? false : updates[k];
       }
     });
     this.updated_on = new Date().toISOString();
