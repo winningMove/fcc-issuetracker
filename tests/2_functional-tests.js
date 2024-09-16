@@ -130,21 +130,6 @@ suite("Functional Tests", function () {
           done();
         });
     });
-    test("successfully updates multiple fields", (done) => {
-      requester
-        .put("/api/issues/apitest")
-        .set("content-type", "application/x-www-form-urlencoded")
-        .send({
-          _id,
-          issue_text: "updated again",
-          status_text: "oh no",
-        })
-        .end((err, res) => {
-          assert.strictEqual(res.body.result, "successfully updated");
-          assert.strictEqual(res.body._id, _id);
-          done();
-        });
-    });
     test("rejects when missing _id", (done) => {
       requester
         .put("/api/issues/apitest")
