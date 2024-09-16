@@ -58,7 +58,7 @@ module.exports = function (app) {
         Object.entries(fieldsToUpdate).filter(([k, v]) => v !== "")
       );
       if (Object.keys(updates).length === 0)
-        return res.json({ error: "no update field(s) sent" });
+        return res.json({ error: "no update field(s) sent", _id });
 
       const issue = projects[project].find((issue) => issue._id === _id);
       if (!issue) return res.json({ error: "could not update", _id });
